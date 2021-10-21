@@ -1,0 +1,193 @@
+<div class="container-fluid p-0">
+  <div class="coupons-image">
+    <div class="col-md-12 text-center text-position-center">
+      <h1 class="text-light fs-30 fw-700">APPLY COUPON NOW</h1>
+    </div>
+  </div>
+  <div class="profile-bg">
+    <div class="sub-bg">
+      <div class="grid">
+        <div class="row mg-0">
+          <div class="col-md-12">
+            <h1 class="fs-20 fw-700 text-color">Available Coupons</h1>
+          </div>
+        </div>
+        <div class="row mg-0 d-flex profile-gap">
+          
+          <div class="col-md-3 my-2" *ngFor="let coupon of allcuponsdata">
+            <div class="coupon">
+              <img
+                src="../assets/images/coupon1.png"
+                alt="Avatar"
+                style="width: 100%"
+              />
+              <div class="container" style="background-color: white">
+                <h2 class="fn1rem">
+                  <b>{{ coupon.couponApplicableOn }}</b>
+                </h2>
+                <p>
+                  lorem ipsum dolor sit amet, consect sdmel slfjd dolor em
+                  tmetal
+                </p>
+              </div>
+              <div class="container">
+                <p>
+                  Use Promo Code:
+                  <span class="promo">{{ coupon.couponCode }}</span>
+                </p>
+                <p class="expire">{{ coupon.couponExpiry }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-3 my-2">
+            <div class="coupon">
+              <img
+                src="../assets/images/coupon1.png"
+                alt="Avatar"
+                style="width: 100%"
+              />
+              <div class="container" style="background-color: white">
+                <h2 class="fn1rem"><b>20% OFF YOUR PURCHASE</b></h2>
+                <p>
+                  lorem ipsum dolor sit amet, consect sdmel slfjd dolor em
+                  tmetal
+                </p>
+              </div>
+              <div class="container">
+                <p>Use Promo Code: <span class="promo">BOH232</span></p>
+                <p class="expire">Expires: Jan 03, 2021</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 my-2">
+            <div class="coupon">
+              <img
+                src="../assets/images/coupon1.png"
+                alt="Avatar"
+                style="width: 100%"
+              />
+              <div class="container" style="background-color: white">
+                <h2 class="fn1rem"><b>20% OFF YOUR PURCHASE</b></h2>
+                <p>
+                  lorem ipsum dolor sit amet, consect sdmel slfjd dolor em
+                  tmetal
+                </p>
+              </div>
+              <div class="container">
+                <p>Use Promo Code: <span class="promo">BOH232</span></p>
+                <p class="expire">Expires: Jan 03, 2021</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 my-2">
+            <div class="coupon">
+              <img
+                src="../assets/images/coupon1.png"
+                alt="Avatar"
+                style="width: 100%"
+              />
+              <div class="container" style="background-color: white">
+                <h2 class="fn1rem"><b>20% OFF YOUR PURCHASE</b></h2>
+                <p>
+                  lorem ipsum dolor sit amet, consect sdmel slfjd dolor em
+                  tmetal
+                </p>
+              </div>
+              <div class="container">
+                <p>Use Promo Code: <span class="promo">BOH232</span></p>
+                <p class="expire">Expires: Jan 03, 2021</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 my-2">
+            <div class="coupon">
+              <img
+                src="../assets/images/coupon1.png"
+                alt="Avatar"
+                style="width: 100%"
+              />
+              <div class="container" style="background-color: white">
+                <h2 class="fn1rem"><b>20% OFF YOUR PURCHASE</b></h2>
+                <p>
+                  lorem ipsum dolor sit amet, consect sdmel slfjd dolor em
+                  tmetal
+                </p>
+              </div>
+              <div class="container">
+                <p>Use Promo Code: <span class="promo">BOH232</span></p>
+                <p class="expire">Expires: Jan 03, 2021</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 my-2">
+            <div class="coupon">
+              <img
+                src="../assets/images/coupon1.png"
+                alt="Avatar"
+                style="width: 100%"
+              />
+              <div class="container" style="background-color: white">
+                <h2 class="fn1rem"><b>20% OFF YOUR PURCHASE</b></h2>
+                <p>
+                  lorem ipsum dolor sit amet, consect sdmel slfjd dolor em
+                  tmetal
+                </p>
+              </div>
+              <div class="container">
+                <p>Use Promo Code: <span class="promo">BOH232</span></p>
+                <p class="expire">Expires: Jan 03, 2021</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 my-2">
+            <div class="coupon">
+              <img
+                src="../assets/images/coupon1.png"
+                alt="Avatar"
+                style="width: 100%"
+              />
+              <div class="container" style="background-color: white">
+                <h2 class="fn1rem"><b>20% OFF YOUR PURCHASE</b></h2>
+                <p>
+                  lorem ipsum dolor sit amet, consect sdmel slfjd dolor em
+                  tmetal
+                </p>
+              </div>
+              <div class="container">
+                <p>Use Promo Code: <span class="promo">BOH232</span></p>
+                <p class="expire">Expires: Jan 03, 2021</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 my-2">
+            <div class="coupon">
+              <img
+                src="../assets/images/coupon1.png"
+                alt="Avatar"
+                style="width: 100%"
+              />
+              <div class="container" style="background-color: white">
+                <h2 class="fn1rem"><b>20% OFF YOUR PURCHASE</b></h2>
+                <p>
+                  lorem ipsum dolor sit amet, consect sdmel slfjd dolor em
+                  tmetal
+                </p>
+              </div>
+              <div class="container">
+                <p>Use Promo Code: <span class="promo">BOH232</span></p>
+                <p class="expire">Expires: Jan 03, 2021</p>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

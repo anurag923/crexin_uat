@@ -1,0 +1,390 @@
+<div class="container-fluid p-0">
+  <div class="imag_banner clas_pos">
+    <img src=" /assets/images/BannerImage.png" class="img-fluid img_object" />
+  </div>
+  <div class="d-flex">
+    <!-- <h1 class="fs-50  text-light my-auto w-100 home-text fi text-center fw-700">EQUIPMENT RENTALS MADE EASY</h1> -->
+    <div class="hover clss-rel two ml-auto my-auto pr-3">
+      <ul class="list-unstyled">
+        <li class="mb-4">
+          <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+            <i class="fa fa-facebook fnt-fff"></i>
+          </a>
+        </li>
+        <li class="mb-4">
+          <a href="https://twitter.com/LOGIN" target="_blank" title="twitter">
+            <i class="fa fa-twitter fnt-fff"></i>
+          </a>
+        </li>
+
+        <li class="mb-4">
+          <a
+            href="https://www.instagram.com/accounts/login/"
+            target="_blank"
+            title="instagram"
+          >
+            <i class="fa fa-instagram fnt-fff"></i>
+          </a>
+        </li>
+        <li class="mb-4">
+          <a href="https://www.youtube.com/" target="_blank" title="youtube">
+            <i class="fa fa-youtube-play fnt-fff"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- <div class="m-auto">
+           <div class="equip-2">
+              <h2 class="equip-hd-1">EQUIPMENT RENTALS MADE EASY</h2>
+             </div>
+     </div> -->
+  </div>
+
+  <section class="five">
+    <div class="container-fluid">
+      <div class="row three my-5 pt-4">
+        <div class="flex-container mx-auto">
+          <span class="map-icon"><i class="fa fa-map-marker"></i></span>
+          <div style="flex-grow: 1">
+            <div class="selectdiv">
+              <label>
+                <select
+                  class="form-control brd-clr form-select loc_cls"
+                  aria-label="Default select example"
+                >
+                  <!-- <option selected class="cls-blk">Select Location</option> -->
+                  <option value="1" class="cls-blk" selected>Hyderabad</option>
+                  <!-- <option value="2" class="cls-blk">Vijayawada</option>
+                  <option value="3" class="cls-blk">Warangal</option> -->
+                </select>
+              </label>
+            </div>
+          </div>
+          <div style="flex-grow: 8">
+            <input
+              type="search"
+              aria-label="Last name"
+              class="
+                form-control
+                brd-clr1
+                width_too
+                border-left-0
+                pdt-20
+                pdb-20
+              "
+              (keydown)="search_button_enter($event, search_categorie.value)"
+              placeholder="Search Construction Equipment"
+              #search_categorie
+            />
+          </div>
+          <div style="flex-grow: 1">
+            <button
+              type="button"
+              class="btn width_btn btn-srch ml-5 fs-15"
+              (click)="search_button(search_categorie.value)"
+            >
+              SEARCH
+            </button>
+          </div>
+        </div>
+
+        <!-- <div class="input-group">
+          <div class="input-group-prepend my-2">
+            <button type="button" class="brd-clr dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-map-marker mr-3"></i> Hyderabad
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">Mancherial</a>
+              <a class="dropdown-item">Jagitial</a>
+              <a class="dropdown-item">Adilabad</a>
+            </div>
+            <input type="text" class="form-control brd-clr border-left-0 pdt-20 pdb-20" placeholder="Find Equipment"
+              #search_categorie>
+          </div>
+          <div class="m-auto">
+            <button type="button" class="btn btn-srch ml-5 my-2 fs-15 "
+              (click)="search_button(search_categorie.value)">SEARCH</button>
+          </div>
+
+        </div> -->
+
+        <div class="row mx-15 mt-2">
+          <div class="col">
+            <img src="assets/images/Backhoeloader.png" class="img-fluid" />
+          </div>
+          <div class="col">
+            <img src="assets/images/exacavator.png" class="img-fluid" />
+          </div>
+          <div class="col">
+            <img src="assets/images/wheeloader.png" class="img-fluid" />
+          </div>
+          <div class="col">
+            <img src="assets/images/motorgrader.png" class="img-fluid" />
+          </div>
+          <div class="col">
+            <img src="assets/images/roadroller.png" class="img-fluid" />
+          </div>
+          <div class="col">
+            <img src="assets/images/telescopichandler.png" class="img-fluid" />
+          </div>
+
+          <div class="col">
+            <img src="assets/images/crawler.png" class="img-fluid" />
+          </div>
+
+          <div class="col">
+            <img src="assets/images/forlifttruck.png" class="img-fluid" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row mgl-0 mgr-0 five-brd my-5">
+        <h1 class="five-hd-1 w-100 fs-40 text-center">
+          CREXIN <span class="five-hd-2 text-center"> RENTALS </span>
+        </h1>
+
+        <h6 class="five-para-1 fs-15 lh-25 mgb-0">
+          CREXIN is an emerging construction equipment rental service provider
+          in India committed to help both customers and equipment owners to
+          manage and grow their business. We are specialized in providing
+          customers a platform to access the best and easiest way to rent
+          equipments according to their needs. Customer will have a flexibility
+          to book an equipment hourly or daily or weekly. Simply CREXIN is the
+          one-stop solution for construction equipment rentals.
+        </h6>
+
+        <div class="ml-auto">
+          <a
+            class="btn btn-know-more mt-3 fs-15"
+            routerLink="/aboutus"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Know more</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="six">
+    <div class="container">
+      <div class="row justify-content-around mgl-0 mgr-0">
+        <div class="col-md-4 my-3">
+          <div class="card seven">
+            <h2 class="seven-hd-1 mx-auto mt-3">RENT AN EQUIPMENT</h2>
+            <div class="mt-auto mx-auto mb-5 z-1">
+              <button
+                type="button"
+                class="btn btn-rent-now fs-15"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                routerLink="/rent"
+              >
+                RENT NOW
+              </button>
+            </div>
+            <div class="overlay-seven">
+              <div class="text-seven mt-4 ml-1">
+                We have wide variety of construction equipments that meets all
+                your construction needs. Signup with CREXIN and experience the
+                easiest way of renting an equipment. Click RENT NOW and
+                experience the easy way of booking and tracking and much more.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 my-3">
+          <div class="card eight">
+            <h2 class="seven-hd-1 mx-auto mt-3">HAVE AN EQUIPMENT?</h2>
+            <div class="mt-auto mx-auto mb-5 z-1">
+              <button
+                type="button"
+                class="btn btn-rent-now fs-15"
+                routerLink="/vendor"
+              >
+                REGISTER NOW
+              </button>
+            </div>
+            <div class="overlay-eight">
+              <div class="text-eight">
+                Do you own a construction equipment ? Then CREXIN is the right
+                place. Partner with us and enroll your equipments with crexin.
+                We help you keep your equipments busy.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nine" id="Enquiry">
+    <div class="container">
+      <div class="row mgl-0 mgr-0">
+        <div class="col-md-6 col-sm-12 col-xs-12 my-5">
+          <div class="form-one-1">
+            <h4 class="nine-hd-1">
+              Let us Know your Rental<br />
+              Requirement
+            </h4>
+            <form [formGroup]="UserEnquiry">
+              <div class="form-group">
+                <label for="" class="fs-15 text-light my-2 w-75"
+                  >Name <span class="red-cls">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control form-jcb"
+                  placeholder="Name"
+                  id="name"
+                  [(ngModel)]="name"
+                  formControlName="fullname"
+                  [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }"
+                />
+                <div
+                  *ngIf="submitted && f.fullname.errors"
+                  class="invalid-feedback enquiry-error-message"
+                >
+                  <div *ngIf="f.fullname.errors.required" class="fs-13">
+                    Fullname is required
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="fs-15 text-light my-2 w-75">Email</label>
+                <input
+                  type="email"
+                  class="form-control form-jcb"
+                  placeholder="Email"
+                  id="email"
+                  [(ngModel)]="email"
+                  formControlName="email"
+                  [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                />
+                <div
+                  *ngIf="submitted && f.email.errors"
+                  class="invalid-feedback enquiry-error-message"
+                >
+                  <!-- <div *ngIf="f.email.errors.required" class="fs-13">Email is required</div> -->
+                  <div *ngIf="f.email.errors.email" class="fs-13">
+                    Please enter a valid email
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="fs-15 text-light my-2 w-75"
+                  >Mobile <span class="red-cls">*</span></label
+                >
+                <input
+                  type="tel"
+                  class="form-control form-jcb"
+                  placeholder="Mobile"
+                  id="number"
+                  [(ngModel)]="mobile"
+                  formControlName="mobile"
+                  [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+                />
+                <div
+                  *ngIf="submitted && f.mobile.errors"
+                  class="invalid-feedback enquiry-error-message"
+                >
+                  <div *ngIf="f.mobile.errors.required" class="fs-13">
+                    Mobile Number is required
+                  </div>
+                  <div *ngIf="f.mobile.errors.pattern" class="fs-13">
+                    Mobile Number must be of 10 digits
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="fs-15 text-light my-2 w-75"
+                  >Location <span class="red-cls">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control form-jcb"
+                  placeholder="Location"
+                  [(ngModel)]="location"
+                  id="location"
+                  formControlName="location"
+                  [ngClass]="{ 'is-invalid': submitted && f.location.errors }"
+                />
+                <div
+                  *ngIf="submitted && f.location.errors"
+                  class="invalid-feedback enquiry-error-message"
+                >
+                  <div *ngIf="f.location.errors.required" class="fs-13">
+                    Location is required
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="fs-15 text-light my-2 w-75"
+                  >Message<span class="red-cls">*</span></label
+                >
+                <textarea
+                  class="form-control form-jcb"
+                  rows="3"
+                  [(ngModel)]="description"
+                  placeholder="Type here....."
+                  id="comment"
+                  [ngClass]="{
+                    'is-invalid': submitted && f.description.errors
+                  }"
+                  formControlName="description"
+                ></textarea>
+                <div
+                  *ngIf="submitted && f.description.errors"
+                  class="invalid-feedback enquiry-error-message"
+                >
+                  <div *ngIf="f.description.errors.required" class="fs-13">
+                    Message is required
+                  </div>
+                  <!-- <div *ngIf="f.description.errors.minLength" class="fs-13">Minimum length</div> -->
+                  <div *ngIf="f.description.errors.pattern">
+                    Please enter minimum 50 characters
+                  </div>
+                </div>
+              </div>
+              <div class="text-center my-4">
+                <button
+                  type="button"
+                  class="btn btn-frm-submit"
+                  (click)="user_enquiry()"
+                >
+                  SUBMIT
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 col-xs-12 my-5 text-white">
+          <h2 class="nine-hd-2 fn-25 my-3">
+            CREXIN MADE EQUIPMENT RENTALS EASY AND EFFICIENT
+          </h2>
+          <P class="my-3 nine-para-1"
+            >We made renting process very simple and fast. For example, you can
+            select the equipment , choose the Rent type, say ‘Daily’, choose the
+            number of days and Pay some advance. That’s it ; We will make sure
+            to deliver efficient equipment with qualified operator at your
+            specified work location in time.</P
+          >
+
+          <P class="my-3 nine-para-1"
+            >Rather than leasing equipments for longer periods, at CREXIN, you
+            can rent equipments as and when needed which helps you to minimize
+            lease expenses</P
+          >
+
+          <P class="my-3 nine-para-1"
+            >We provide our best support to you till your work contract is
+            completed. With our web & mobile platforms you can track your
+            bookings and expenses.</P
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

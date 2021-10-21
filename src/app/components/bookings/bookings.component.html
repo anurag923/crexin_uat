@@ -1,0 +1,1298 @@
+<div class="container-fluid p-0">
+  <div class="profile-image">
+    <div class="col-md-12 text-center text-position-center">
+      <h1 class="text-light fs-30 fw-700">YOUR BOOKINGS</h1>
+    </div>
+  </div>
+  <div class="profile-bg">
+    <div class="sub-bg">
+      <div class="grid">
+        <div class="row mg-0">
+          <div class="col-md-12 my-3">
+            <h1 class="fs-21 fw-700 text-color mgb-0">Bookings</h1>
+          </div>
+          <div class="col-md-12">
+            <!--sample accordion-->
+
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button
+                    class="accordion-button acc-cls w-100 collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                  >
+                    <span>On-Going</span>
+                    <i class="fa fa-angle-down float-right text-right"></i>
+                  </button>
+                </h2>
+                <div
+                  id="collapseTwo"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="headingTwo"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body d-flex justify-content-center">
+                    <div class="row mgl-0 mgr-0 w-100">
+                      <!-- <div class="col-md-12">
+                                              <h1 class="fs-16 fw-700 text-color mgb-0">On-Going Bookings</h1>
+                                          </div> -->
+                      <div *ngIf="loading" class="text-center col-md-12">
+                        <h1 class="fs-15 fw-700">loading ...</h1>
+                      </div>
+                      <div
+                        *ngIf="noongoingitem; else showongoing"
+                        class="text-center col-md-12"
+                      >
+                        <h1 class="fs-18 fw-700 text-color mgb-0">
+                          No On-Going Bookings
+                        </h1>
+                      </div>
+                      <ng-template #showongoing>
+                        <div
+                          class="col-md-4 my-3"
+                          *ngFor="let ongoing of ongoing_array"
+                          (click)="
+                            ongoing_singlebooking(
+                              ongoing.type,
+                              ongoing.booking.booking_id,
+                              ongoing.booking.id
+                            )
+                          "
+                        >
+                          <div class="card on-going-Bookings p-2">
+                            <div>
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-center
+                                  align-justify-content-center
+                                  clr9f9f9f
+                                "
+                              >
+                                <h1 class="text-color fs-15 mgb-0">
+                                  <span>Booking ID</span>
+                                  :
+                                  <span class="font-weight-bold">{{
+                                    ongoing.booking.booked_id
+                                  }}</span>
+                                </h1>
+                              </div>
+
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                  py-2
+                                "
+                              >
+                                <div class="fs-15 mgb-0">
+                                  <span> Booking Type : </span>
+                                  <span class="yellow-cls font-weight-bold">{{
+                                    ongoing.type|titlecase
+                                  }}</span>
+                                </div>
+                                <div class="fs-15 mgb-0">
+                                  <span>Duration : </span>
+                                  <span class="yellow-cls font-weight-bold"
+                                    >1 Day</span
+                                  >
+                                </div>
+                              </div>
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-center
+                                  align-items-center
+                                "
+                              >
+                                <h1 class="fs-15 mgb-0 clr007bff">
+                                  <span>Equipment : </span>
+                                  <span class="font-weight-bold">{{
+                                    ongoing.subcategory.sc_name
+                                  }}</span>
+                                </h1>
+                              </div>
+
+                              <hr class="my-1" />
+                            </div>
+
+                            <div class="text-center pb-2">
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                "
+                              >
+                                <div class="fs-15 text-color mgb-0">
+                                  <span class="mr-1">Start Date :</span
+                                  ><span class="mr-1 font-weight-bold">{{
+                                    ongoing.start_date
+                                  }}</span>
+                                </div>
+
+                                <div class="fs-15 text-color mgb-0">
+                                  <span class="mr-1">Time :</span
+                                  ><span class="mr-1 font-weight-bold">{{
+                                    ongoing.start_time
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="text-center">
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                "
+                              >
+                                <div class="fs-15 text-color mgb-0">
+                                  <span class="mr-1">{{
+                                    ongoing.type === "hourly"
+                                      ? ""
+                                      : "Finish Date : "
+                                  }}</span
+                                  ><span class="mr-1 font-weight-bold">{{
+                                    ongoing.type === "hourly"
+                                      ? ""
+                                      : ongoing.end_date
+                                  }}</span>
+                                </div>
+
+                                <div class="fs-15 text-color mgb-0">
+                                  <span class="mr-1">Time :</span
+                                  ><span class="mr-1 font-weight-bold"
+                                    ><span>{{
+                                      ongoing.type === "hourly"
+                                        ? ""
+                                        : ongoing.end_time
+                                    }}</span></span
+                                  >
+                                </div>
+                              </div>
+                            </div>
+
+                            <hr class="my-1" />
+
+                            <!-- <h1 class="fs-14 text-color fw-600 mgb-0"><span class="mr-1">End
+                                                        Date &Time :</span><span
+                                                        class="mr-1">{{ongoing.end_date}}</span><span>{{ongoing.end_time}}</span>
+                                                    </h1> -->
+
+                            <div class="text-center">
+                              <h1
+                                class="
+                                  mgb-0
+                                  complete-job-text
+                                  hover-click
+                                  text-success
+                                  fs-17
+                                  fw-500
+                                  d-flex
+                                  justify-content-center
+                                  align-items-center
+                                  cursor-pointer
+                                "
+                              >
+                                Click here to Pay & Complete Job
+                                <i
+                                  class="
+                                    fa
+                                    mx-1
+                                    mt-1
+                                    fa-caret-right
+                                    text-success
+                                    fw-500
+                                  "
+                                  aria-hidden="true"
+                                ></i>
+                              </h1>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <button
+                    class="accordion-button acc-cls w-100 collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    <span>Scheduled</span
+                    ><i class="fa fa-angle-down float-right text-right"></i>
+                  </button>
+                </h2>
+                <div
+                  id="collapseThree"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    <div class="row w-100 mgl-0 mgr-0">
+                      <!-- <div class="col-md-12">
+                                              <h1 class="fs-16 fw-700 text-color mgb-0">Scheduled Bookings</h1>
+                                          </div> -->
+                      <div *ngIf="loading" class="text-center col-md-12">
+                        <h1 class="fs-15 fw-700">loading ...</h1>
+                      </div>
+                      <div
+                        *ngIf="noscheduleditem; else showscheduled"
+                        class="text-center col-md-12"
+                      >
+                        <h1 class="fs-18 fw-700 text-color mgb-0">
+                          No Scheduled Bookings
+                        </h1>
+                      </div>
+                      <ng-template #showscheduled>
+                        <div
+                          class="col-md-4 my-3"
+                          *ngFor="let scheduled of scheduled_array"
+                          (click)="
+                            sheduled_singlebooking(
+                              scheduled.type,
+                              scheduled.booking.booking_id,
+                              scheduled.booking.id
+                            )
+                          "
+                        >
+                          <div class="card scheduled-bookings">
+                            <div>
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-center
+                                  align-items-center
+                                  clr9f9f9f
+                                  pb-2
+                                "
+                              >
+                                <h1
+                                  class="
+                                    text-color
+                                    fs-17
+                                    font-weight-bold
+                                    mgb-0
+                                  "
+                                >
+                                  Booking ID : {{ scheduled.booking.booked_id }}
+                                </h1>
+                              </div>
+
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                "
+                              >
+                                <h1 class="fs-17 mgb-0">
+                                  Booking Type -<span
+                                    class="yellow-cls font-weight-bold"
+                                  >
+                                    {{ scheduled.type|titlecase }}</span
+                                  >
+                                </h1>
+
+                                <h1 class="fs-17 fw-700 font-weight-bold mgb-0">
+                                  <span>Duration: </span><span>4 Days </span>
+                                </h1>
+                              </div>
+
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-center
+                                  align-items-center
+                                "
+                              >
+                                <h1 class="fs-17 mgb-0 clr007bff">
+                                  <span>Equipment : </span>
+                                  <span class="font-weight-bold">{{
+                                    scheduled.subcategory.sc_name
+                                  }}</span>
+                                </h1>
+                              </div>
+
+                              <hr class="m-1" />
+                            </div>
+                            <div class="text-center">
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                "
+                              >
+                                <div class="fs-17 text-color fw-600 mgb-0">
+                                  <span class="mr-1">Start Date :</span
+                                  ><span class="mr-1">{{
+                                    scheduled.start_date
+                                  }}</span>
+                                </div>
+
+                                <div class="fs-17 text-color fw-600 mgb-0">
+                                  <span class="mr-1">Time :</span
+                                  ><span class="mr-1">{{
+                                    scheduled.start_time
+                                  }}</span>
+                                </div>
+                              </div>
+
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                  clr9f9f9f
+                                  pb-2
+                                "
+                              >
+                                <div class="fs-17 text-color fw-600 mgb-0">
+                                  <span class="mr-1">{{
+                                    scheduled.type === "hourly"
+                                      ? ""
+                                      : "Finish Date:"
+                                  }}</span
+                                  ><span class="mr-1">{{
+                                    scheduled.type === "hourly"
+                                      ? ""
+                                      : scheduled.end_date
+                                  }}</span>
+                                </div>
+                                <div
+                                  class="
+                                    d-flex
+                                    justify-content-between
+                                    align-items-center
+                                  "
+                                >
+                                  <div class="fs-17 text-color fw-600 mgb-0">
+                                    <span>{{
+                                      scheduled.type === "hourly" ? "" : "Time:"
+                                    }}</span>
+
+                                    <span>{{
+                                      scheduled.type === "hourly"
+                                        ? ""
+                                        : scheduled.end_time
+                                    }}</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- <h1 class="fs-14 text-color fw-600 mgb-0"><span
+                                                              class="mr-1">End Date &Time :</span><span
+                                                              class="mr-1">{{scheduled.end_date}}</span><span>{{scheduled.end_time}}</span>
+                                                      </h1> -->
+                            </div>
+                            <div class="text-center">
+                              <h1
+                                class="
+                                  mgb-0
+                                  complete-job-text
+                                  hover-click
+                                  text-success
+                                  fs-17
+                                  fw-500
+                                  d-flex
+                                  justify-content-center
+                                  align-items-center
+                                  cursor-pointer
+                                "
+                              >
+                                Click here to Pay & Complete Job
+                                <i
+                                  class="
+                                    fa
+                                    mx-1
+                                    mt-1
+                                    fa-caret-right
+                                    text-success
+                                    fw-500
+                                  "
+                                  aria-hidden="true"
+                                ></i>
+                              </h1>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button
+                    class="accordion-button acc-cls w-100"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    <span>Pending</span>
+                    <i class="fa fa-angle-down float-right text-right"></i>
+                  </button>
+                </h2>
+                <div
+                  id="collapseOne"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    <div class="row mgl-0 mgr-0">
+                      <!-- <div class="col-md-12">
+                                                <h1 class="fs-16 fw-600 text-color mgb-0">Pending Bookings</h1>
+                                            </div> -->
+                      <div *ngIf="loading" class="text-center col-md-12">
+                        <h1 class="fs-15 fw-700">loading ...</h1>
+                      </div>
+                      <div
+                        *ngIf="nopendingitem; else showpending"
+                        class="text-center col-md-12"
+                      >
+                        <h1 class="fs-18 fw-700 text-color mgb-0">
+                          No Pending Bookings
+                        </h1>
+                      </div>
+                      <ng-template #showpending>
+                        <div
+                          class="col-md-4 my-3"
+                          *ngFor="let pending of pending_array"
+                        >
+                          <div class="card card-shad completed-bookings">
+                            <div>
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-center
+                                  align-items-center
+                                  clr9f9f9f
+                                "
+                              >
+                                <div class="text-color fw-700 mb-2 fs-17">
+                                  Booking ID : {{ pending.booking.booked_id }}
+                                </div>
+                              </div>
+
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                  mt-2
+                                "
+                              >
+                                <div class="fs-17 mgb-0">
+                                  <span>Booking Type : </span>
+                                  <span class="yellow-cls font-weight-bold">{{
+                                    pending.type|titlecase
+                                  }}</span>
+                                </div>
+
+                                <div class="fs-17 mgb-0">
+                                  <span>Duration : </span>
+                                  <span class="yellow-cls font-weight-bold"
+                                    >4 Days</span
+                                  >
+                                </div>
+                              </div>
+
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-center
+                                  align-items-center
+                                "
+                              >
+                                <div class="fs-17 mt-2 clr007bff">
+                                  <span>Equipment : </span>
+                                  <span class="font-weight-bold">{{
+                                    pending.subcategory.sc_name
+                                  }}</span>
+                                </div>
+                              </div>
+
+                              <hr />
+                            </div>
+
+                            <div class="text-center pb-2">
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                "
+                              >
+                                <div class="fs-17 text-color mgb-0">
+                                  <span class="mr-1">Start Date :</span
+                                  ><span class="mr-1 font-weight-bold">{{
+                                    pending.start_date
+                                  }}</span>
+                                </div>
+
+                                <div class="fs-17 text-color mgb-0">
+                                  <span class="mr-1">Time :</span
+                                  ><span class="mr-1 font-weight-bold">{{
+                                    pending.start_time
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="text-center">
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                "
+                              >
+                                <div class="fs-17 text-color mgb-0">
+                                  <span class="mr-1">{{
+                                    pending.type === "hourly"
+                                      ? ""
+                                      : "Finish Date : "
+                                  }}</span
+                                  ><span class="mr-1 font-weight-bold">{{
+                                    pending.type === "hourly"
+                                      ? ""
+                                      : pending.end_date
+                                  }}</span>
+                                </div>
+
+                                <div class="fs-15 text-color mgb-0">
+                                  <span class="mr-1">Time :</span
+                                  ><span class="font-weight-bold">{{
+                                    pending.type === "hourly"
+                                      ? ""
+                                      : pending.end_time
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- <h1 class="fs-14 text-color fw-600 mgb-0"><span class="mr-1">End
+                                                                Date &Time :</span><span
+                                                                class="mr-1">{{pending.end_date}}</span><span>{{pending.end_time}}</span>
+                                                        </h1> -->
+
+                            <div class="text-center">
+                              <h1
+                                class="
+                                  mgb-0
+                                  complete-job-text
+                                  hover-click
+                                  text-success
+                                  fs-17
+                                  fw-500
+                                  d-flex
+                                  justify-content-center
+                                  align-items-center
+                                  cursor-pointer
+                                "
+                                (click)="
+                                  sheduled_singlebooking(
+                                    pending.type,
+                                    pending.booking.booking_id,
+                                    pending.booking.id
+                                  )
+                                "
+                              >
+                                Click here to Pay & Complete Job
+                                <i
+                                  class="
+                                    fa
+                                    mx-1
+                                    mt-1
+                                    fa-caret-right
+                                    text-success
+                                    fw-500
+                                  "
+                                  aria-hidden="true"
+                                ></i>
+                              </h1>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                  <button
+                    class="accordion-button acc-cls w-100 collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    <span>Completed</span
+                    ><i class="fa fa-angle-down float-right text-right"></i>
+                  </button>
+                </h2>
+                <div
+                  id="collapseFour"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingFour"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    <div class="row w-100 mgl-0 mgr-0">
+                      <!-- <div class="col-md-12">
+                                            <h1 class="fs-16 fw-700 text-color mgb-0">Completed Bookings</h1>
+                                        </div> -->
+                      <div *ngIf="loading" class="text-center col-md-12">
+                        <h1 class="fs-15 fw-700">loading ...</h1>
+                      </div>
+                      <div
+                        *ngIf="nocompleteditem; else showcompleteditem"
+                        class="text-center col-md-12"
+                      >
+                        <h1 class="fs-18 fw-700 text-color mgb-0">
+                          No Completed Bookings
+                        </h1>
+                      </div>
+                      <ng-template #showcompleteditem>
+                        <div
+                          class="col-md-4 my-3"
+                          *ngFor="let completed of completed_array"
+                          (click)="
+                            sheduled_singlebooking(
+                              completed.type,
+                              completed.booking.booking_id,
+                              completed.booking.id
+                            )
+                          "
+                        >
+                          <div class="card completed-bookings">
+                            <div>
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-center
+                                  align-items-center
+                                  clr9f9f9f
+                                "
+                              >
+                                <div class="text-color fs-15 mgb-0">
+                                  <span>Booking ID : </span>
+                                  <span class="font-weight-bold">
+                                    {{ completed.booking.booked_id }}</span
+                                  >
+                                </div>
+                              </div>
+
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                "
+                              >
+                                <div class="fs-17 mgb-0">
+                                  <span>Booking Type : </span>
+                                  <span class="yellow-cls font-weight-bold">{{
+                                    completed.type|titlecase
+                                  }}</span>
+                                </div>
+
+                                <div class="fs-15 mgb-0">
+                                  <span>Duration : </span>
+                                  <span class="yellow-cls font-weight-bold"
+                                    >1 Day</span
+                                  >
+                                </div>
+                              </div>
+
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-center
+                                  align-items-center
+                                "
+                              >
+                                <div class="fs-15 mgb-0 clr007bff">
+                                  <span>Equipment : </span
+                                  ><span class="font-weight-bold">{{
+                                    completed.subcategory.sc_name
+                                  }}</span>
+                                </div>
+                              </div>
+                              <hr />
+                            </div>
+
+                            <div class="text-center pb-2">
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                "
+                              >
+                                <div class="fs-15 text-color mgb-0">
+                                  <span class="mr-1">Start Date :</span
+                                  ><span class="mr-1 font-weight-bold">{{
+                                    completed.start_date
+                                  }}</span>
+                                </div>
+
+                                <div class="fs-15 text-color mgb-0">
+                                  <span class="mr-1">Time :</span
+                                  ><span class="mr-1 font-weight-bold">{{
+                                    completed.start_time
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="text-center">
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                "
+                              >
+                                <div class="fs-15 text-color mgb-0">
+                                  <span class="mr-1">{{
+                                    completed.type === "hourly"
+                                      ? ""
+                                      : "Finish Date : "
+                                  }}</span
+                                  ><span class="mr-1 font-weight-bold">{{
+                                    completed.type === "hourly"
+                                      ? ""
+                                      : completed.end_date
+                                  }}</span>
+                                </div>
+
+                                <div class="fs-15 text-color mgb-0">
+                                  <span class="mr-1">Time :</span
+                                  ><span class="mr-1 font-weight-bold"
+                                    ><span>{{
+                                      completed.type === "hourly"
+                                        ? ""
+                                        : completed.end_time
+                                    }}</span></span
+                                  >
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- <h1 class="fs-14 text-color fw-600 mgb-0"><span class="mr-1">End
+                                                            Date &Time :</span><span
+                                                            class="mr-1">{{completed.end_date}}</span><span>{{completed.end_time}}</span>
+                                                    </h1> -->
+
+                            <!-- <div class="text-center">
+                                                    <h1 class="mgb-0 complete-job-text hover-click text-success fs-17  fw-500 d-flex justify-content-center align-items-center cursor-pointer">
+                                                        Click here to Pay &
+                                                        Complete Job <i
+                                                            class="fa mx-1 mt-1 fa-caret-right text-success  fw-500"
+                                                            aria-hidden="true"></i>
+                                                    </h1>
+                                                </div> -->
+                          </div>
+                        </div>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                  <button
+                    class="accordion-button acc-cls w-100 collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseFive"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    <span>Cancelled</span
+                    ><i class="fa fa-angle-down float-right text-right"></i>
+                  </button>
+                </h2>
+                <div
+                  id="collapseFive"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingFour"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    <div class="row w-100 mgl-0 mgr-0">
+                      <!-- <div class="col-md-12">
+                                            <h1 class="fs-16 fw-700 text-color mgb-0">Completed Bookings</h1>
+                                        </div> -->
+                      <div *ngIf="loading" class="text-center col-md-12">
+                        <h1 class="fs-15 fw-700">loading ...</h1>
+                      </div>
+                      <div
+                        *ngIf="nocancelleditem; else showcancelleditem"
+                        class="text-center col-md-12"
+                      >
+                        <h1 class="fs-18 fw-700 text-color mgb-0">
+                          No Cancelled Bookings to Show
+                        </h1>
+                      </div>
+                      <ng-template #showcancelleditem>
+                        <div
+                          class="col-md-4 my-3"
+                          *ngFor="let cancelled of cancelled_array"
+                        >
+                          <div class="card completed-bookings">
+                            <div>
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-center
+                                  align-items-center
+                                  border-bottom
+                                  pb-2
+                                "
+                              >
+                                <h1
+                                  class="
+                                    text-color
+                                    font-weight-bold
+                                    fs-18
+                                    mgb-0
+                                  "
+                                >
+                                  Booking ID :<span class="font-weight-bold">{{
+                                    cancelled.booking.booked_id
+                                  }}</span>
+                                </h1>
+                              </div>
+
+                              <div
+                                class="
+                                  d-flex
+                                  justify-content-between
+                                  align-items-center
+                                "
+                              >
+                                <div class="fs-17 mgb-0">
+                                  Booking Type:
+                                  <span class="font-weight-bold">{{
+                                    cancelled.type|titlecase
+                                  }}</span>
+                                </div>
+
+                                <div class="fs-17 mgb-0">
+                                  <span> Duration:</span>
+                                  <span class="font-weight-bold"> 3 Days</span>
+                                </div>
+                              </div>
+
+                              <div class="d-flex justify-content-center">
+                                <div class="fs-17 fw-600 mgb-0 clr199cfc">
+                                  <span>Equipment : </span>
+                                  <span class="font-weight-bold">{{
+                                    cancelled.subcategory.sc_name
+                                  }}</span>
+                                </div>
+                              </div>
+
+                              <hr class="m-1" />
+                            </div>
+
+                            <div
+                              class="
+                                d-flex
+                                justify-content-between
+                                align-items-center
+                                pb-2
+                              "
+                            >
+                              <div class="text-center fs-15 mgb-0">
+                                <span>Start Date : </span>
+                                <span class="font-weight-bold"
+                                  >{{ cancelled.start_date }}
+                                </span>
+                              </div>
+
+                              <div class="text-center fs-15 mgb-0">
+                                <span>Time : </span>
+                                <span class="font-weight-bold">{{
+                                  cancelled.start_time
+                                }}</span>
+                              </div>
+                            </div>
+
+                            <div
+                              class="
+                                d-flex
+                                justify-content-between
+                                align-items-center
+                                pb-2
+                              "
+                            >
+                              <div class="text-center fs-15 mgb-0">
+                                <span>Finish Date : </span>
+                                <span class="font-weight-bold"
+                                  >{{ cancelled.end_date }}
+                                </span>
+                              </div>
+
+                              <div class="text-center fs-15 mgb-0">
+                                <span>Time : </span>
+                                <span class="font-weight-bold">{{
+                                  cancelled.end_time
+                                }}</span>
+                              </div>
+                            </div>
+
+                            <!-- <div class="text-center">
+                                                    <h1 class="mgb-0 complete-job-text hover-click text-success fs-15  fw-500 d-flex justify-content-center align-items-center cursor-pointer">
+                                                        Click here to Pay &
+                                                        Complete Job <i
+                                                            class="fa mx-1 mt-1 fa-caret-right text-success  fw-500"
+                                                            aria-hidden="true"></i>
+                                                    </h1>
+                                                </div> -->
+                            <div class="d-flex justify-content-center">
+                              <img
+                                src="assets/images/cancelled_img.png"
+                                width="150"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--sample accordion-->
+            <!-- <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+
+                                    <button class="accordion-button collapsed w-100"  type="button" data-toggle="collapse"
+                                        data-target="#collapseZero" aria-expanded="false"
+                                        aria-controls="collapseThree">Pending Bookings
+                                        <i class="fa fa-angle-down fs-20 fw-700"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseZero" class="accordion-collapse show collapse"
+                                    aria-labelledby="headingThree" data-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="row mgl-0 mgr-0">
+
+                                            <div *ngIf="loading" class="text-center col-md-12">
+                                                <h1 class="fs-15 fw-700">loading ...</h1>
+                                            </div>
+                                            <div *ngIf="nopendingitem;else showpending"><h1 class="fs-16 fw-700 text-color mgb-0">No bookings available</h1></div>
+                                            <ng-template #showpending>
+                                            <div class="col-md-3 my-3" *ngFor="let pending of pending_array">
+                                                <div class="card card-shad completed-bookings">
+                                                    <div>
+                                                        <h1 class="fs-16 fw-700 mgb-0">Booking Type - <span class="yellow-cls">{{pending.type}}</span>
+                                                        </h1>
+                                                        <h1 class="fs-16 fw-700 mgb-0">{{pending.subcategory.sc_name}}
+                                                        </h1>
+                                                        <h1 class="text-color fs-15 mgb-0">Booking ID :
+                                                            {{pending.booking.booked_id}}</h1>
+                                                        <hr>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <h1 class="fs-14 text-color fw-600 mgb-0"><span
+                                                                class="mr-1">Start Date &Time :</span><span
+                                                                class="mr-1">{{pending.start_date}}</span><span
+                                                                class="">{{pending.start_time}}</span></h1>
+                                                        <h1 class="fs-14 text-color fw-600 mgb-0"><span class="mr-1">End
+                                                                Date &Time :</span><span
+                                                                class="mr-1">{{pending.end_date}}</span><span>{{pending.end_time}}</span>
+                                                        </h1>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <h1 class="mgb-0 complete-job-text hover-click text-success fs-17  fw-500 d-flex justify-content-center align-items-center cursor-pointer"
+                                                            (click)="sheduled_singlebooking(pending.type,pending.booking.booking_id,pending.booking.id)">
+                                                            Click here to Pay &
+                                                            Complete Job <i
+                                                                class="fa mx-1 mt-1 fa-caret-right text-success  fw-500"
+                                                                aria-hidden="true"></i>
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button w-100" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">On-Going Bookings
+                                        <i class="fa fa-angle-down fs-20 fw-700"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="row mgl-0 mgr-0">
+
+                                            <div *ngIf="loading" class="text-center col-md-12">
+                                                <h1 class="fs-15 fw-700">loading ...</h1>
+                                            </div>
+                                            <div *ngIf="noongoingitem;else showongoing"><h1 class="fs-16 fw-700 text-color mgb-0">No bookings available</h1></div>
+                                            <ng-template #showongoing>
+                                            <div class="col-md-4 my-3" *ngFor="let ongoing of ongoing_array"
+                                                (click)="ongoing_singlebooking(ongoing.type,ongoing.booking.booking_id,ongoing.booking.id)">
+                                                <div class="card on-going-Bookings">
+                                                    <div>
+                                                        <h1 class="fs-17 fw-700 mgb-0">Booking Type - <span class="yellow-cls">{{ongoing.type}}</span>
+                                                        </h1>
+                                                        <h1 class="fs-15 fw-700 mgb-0">{{ongoing.subcategory.sc_name}}
+                                                        </h1>
+                                                        <h1 class="text-color fs-15 mgb-0">Booking ID :
+                                                            {{ongoing.booking.booked_id}}</h1>
+                                                        <hr>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <h1 class="fs-14 text-color fw-600 mgb-0"><span
+                                                                class="mr-1">Start Date &Time :</span><span
+                                                                class="mr-1">{{ongoing.start_date}}</span><span
+                                                                class="">{{ongoing.start_time}}</span></h1>
+                                                        <h1 class="fs-14 text-color fw-600 mgb-0"><span class="mr-1">End
+                                                                Date &Time :</span><span
+                                                                class="mr-1">{{ongoing.end_date}}</span><span>{{ongoing.end_time}}</span>
+                                                        </h1>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <h1 class="mgb-0 complete-job-text hover-click text-success fs-17 fw-500 d-flex justify-content-center align-items-center cursor-pointer">
+                                                            Click here to Pay &
+                                                            Complete Job <i
+                                                                class="fa mx-1 mt-1 fa-caret-right text-success  fw-500"
+                                                                aria-hidden="true"></i>
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed w-100" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Scheduled Bookings
+                                        <i class="fa fa-angle-down fs-20 fw-700"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                            <div class="row w-100 mgl-0 mgr-0">
+
+                                                <div *ngIf="loading" class="text-center col-md-12">
+                                                    <h1 class="fs-15 fw-700">loading ...</h1>
+                                                </div>
+                                                <div *ngIf="noscheduleditem;else showscheduled"><h1 class="fs-16 fw-700 text-color mgb-0">No bookings available</h1></div>
+                                                <ng-template #showscheduled>
+                                                <div class="col-md-3 my-3" *ngFor="let scheduled of scheduled_array"
+                                                    (click)="sheduled_singlebooking(scheduled.type,scheduled.booking.booking_id,scheduled.booking.id)">
+                                                    <div class="card scheduled-bookings">
+                                                        <div>
+                                                            <h1 class="fs-17 fw-700 mgb-0">Booking Type -<span class="yellow-cls">
+                                                                {{scheduled.type}}</span></h1>
+                                                            <h1 class="fs-15 fw-700 mgb-0">
+                                                                {{scheduled.subcategory.sc_name}}</h1>
+                                                            <h1 class="text-color fs-15 mgb-0">Booking ID :
+                                                                {{scheduled.booking.booked_id}}</h1>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <h1 class="fs-14 text-color fw-600 mgb-0"><span
+                                                                    class="mr-1">Start Date &Time :</span><span
+                                                                    class="mr-1">{{scheduled.start_date}}</span><span
+                                                                    class="">{{scheduled.start_time}}</span></h1>
+                                                            <h1 class="fs-14 text-color fw-600 mgb-0"><span
+                                                                    class="mr-1">End Date &Time :</span><span
+                                                                    class="mr-1">{{scheduled.end_date}}</span><span>{{scheduled.end_time}}</span>
+                                                            </h1>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <h1 class="mgb-0 complete-job-text hover-click text-success fs-17  fw-500 d-flex justify-content-center align-items-center cursor-pointer">
+                                                                Click here to Pay &
+                                                                Complete Job <i
+                                                                    class="fa mx-1 mt-1 fa-caret-right text-success  fw-500"
+                                                                    aria-hidden="true"></i>
+                                                            </h1>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </ng-template>
+                                            </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+
+                                    <button class="accordion-button collapsed w-100" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">Completed Bookings
+                                        <i class="fa fa-angle-down fs-20 fw-700"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="row w-100 mgl-0 mgr-0">
+
+                                            <div *ngIf="loading" class="text-center col-md-12">
+                                                <h1 class="fs-15 fw-700">loading ...</h1>
+                                            </div>
+                                            <div *ngIf="nocompleteditem;else showcompleteditem"><h1 class="fs-16 fw-700 text-color mgb-0">No bookings available</h1></div>
+                                            <ng-template #showcompleteditem>
+                                            <div class="col-md-4 my-3" *ngFor="let completed of completed_array"
+                                                (click)="sheduled_singlebooking(completed.type,completed.booking.booking_id,completed.booking.id)">
+                                                <div class="card completed-bookings">
+                                                    <div>
+                                                        <h1 class="fs-17 fw-700 mgb-0">Booking Type - <span class="yellow-cls">{{completed.type}}</span>
+                                                        </h1>
+                                                        <h1 class="fs-15 fw-600 mgb-0">{{completed.subcategory.sc_name}}
+                                                        </h1>
+                                                        <h1 class="text-color fs-15 mgb-0">Booking ID :
+                                                            {{completed.booking.booked_id}}</h1>
+                                                        <hr>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <h1 class="fs-14 text-color fw-600 mgb-0"><span
+                                                                class="mr-1">Start Date &Time :</span><span
+                                                                class="mr-1">{{completed.start_date}}</span><span
+                                                                class="">{{completed.start_time}}</span></h1>
+                                                        <h1 class="fs-14 text-color fw-600 mgb-0"><span class="mr-1">End
+                                                                Date &Time :</span><span
+                                                                class="mr-1">{{completed.end_date}}</span><span>{{completed.end_time}}</span>
+                                                        </h1>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <h1 class="mgb-0 complete-job-text hover-click text-success fs-17  fw-500 d-flex justify-content-center align-items-center cursor-pointer">
+                                                            Click here to Pay &
+                                                            Complete Job <i
+                                                                class="fa mx-1 mt-1 fa-caret-right text-success  fw-500"
+                                                                aria-hidden="true"></i>
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+          </div>
+        </div>
+        <!-- <div class="row mgl-0 mgr-0">
+                    <div class="col-md-12">
+                        <h1 class="fs-20 fw-700 text-color mgb-0">On-Going Bookings</h1>
+                    </div>
+                    <div *ngIf="loading" class="text-center col-md-12">
+                        <h1 class="fs-15 fw-700">loading ...</h1>
+                    </div>
+                    <div class="col-md-4 my-3" *ngFor="let ongoing of ongoing_array">
+                        <div class="card on-going-Bookings">
+                            <div>
+                                <h1 class="fs-18 fw-700 mgb-0">{{ongoing.subcategory.sc_name}}</h1>
+                                <h1 class="text-color fs-15 mgb-0">Booking ID : {{ongoing.booking.booked_id}}</h1>
+                                <hr>
+                            </div>
+                            <div class="text-center">
+                                <h1 class="fs-15 text-color fw-600 mgb-0"><span class="mr-1">Start Date &Time :</span><span class="mr-1">{{ongoing.start_date}}</span><span class="">{{ongoing.start_time}}</span></h1>
+                                <h1 class="fs-15 text-color fw-600 mgb-0"><span class="mr-1">End Date &Time :</span><span class="mr-1">{{ongoing.end_date}}</span><span>{{ongoing.end_time}}</span></h1>
+                            </div>
+                            <div class="text-center">
+                                <h1 class="mgb-0 complete-job-text fs-18 fw-700 d-flex justify-content-center align-items-center cursor-pointer"><h1 class="mgb-0 mr-1 fs-18 fw-700 mr-3">Click here to Pay & Complete Job</h1><i class="fa fa-arrow-right fs-18 fw-700" aria-hidden="true"></i></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mgl-0 mgr-0">
+                    <div class="col-md-12">
+                        <h1 class="fs-20 fw-700 text-color mgb-0">Scheduled Bookings</h1>
+                    </div>
+                    <div *ngIf="loading" class="text-center col-md-12">
+                        <h1 class="fs-15 fw-700">loading ...</h1>
+                    </div>
+                    <div class="col-md-4 my-3" *ngFor="let scheduled of scheduled_array" (click)="sheduled_singlebooking(scheduled.type,scheduled.booking.booking_id,scheduled.booking.id)">
+                        <div class="card scheduled-bookings">
+                        <div>
+                            <h1 class="fs-18 fw-700 mgb-0">{{scheduled.subcategory.sc_name}}</h1>
+                            <h1 class="text-color fs-15 mgb-0">Booking ID : {{scheduled.booking.booked_id}}</h1>
+                            <hr>
+                        </div>
+                        <div class="text-center">
+                            <h1 class="fs-15 text-color fw-600 mgb-0"><span class="mr-1">Start Date &Time :</span><span class="mr-1">{{scheduled.start_date}}</span><span class="">{{scheduled.start_time}}</span></h1>
+                            <h1 class="fs-15 text-color fw-600 mgb-0"><span class="mr-1">End Date &Time :</span><span class="mr-1">{{scheduled.end_date}}</span><span>{{scheduled.end_time}}</span></h1>
+                        </div>
+                        <div class="text-center">
+                            <h1 class="mgb-0 complete-job-text fs-18 fw-700 d-flex justify-content-center align-items-center cursor-pointer"><h1 class="mgb-0 mr-1 fs-18 fw-700 mr-3">Click here to Pay & Complete Job</h1><i class="fa fa-arrow-right fs-18 fw-700" aria-hidden="true"></i></h1>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mgl-0 mgr-0">
+                    <div class="col-md-12">
+                        <h1 class="fs-20 fw-700 text-color mgb-0">Completed Bookings</h1>
+                    </div>
+                    <div *ngIf="loading" class="text-center col-md-12">
+                        <h1 class="fs-15 fw-700">loading ...</h1>
+                    </div>
+                    <div class="col-md-4 my-3" *ngFor="let completed of completed_array">
+                        <div class="card completed-bookings">
+                            <div>
+                                <h1 class="fs-18 fw-700 mgb-0">{{completed.subcategory.sc_name}}</h1>
+                                <h1 class="text-color fs-15 mgb-0">Booking ID : {{completed.booking.booked_id}}</h1>
+                                <hr>
+                            </div>
+                            <div class="text-center">
+                                <h1 class="fs-15 text-color fw-600 mgb-0"><span class="mr-1">Start Date &Time :</span><span class="mr-1">{{completed.start_date}}</span><span class="">{{completed.start_time}}</span></h1>
+                                <h1 class="fs-15 text-color fw-600 mgb-0"><span class="mr-1">End Date &Time :</span><span class="mr-1">{{completed.end_date}}</span><span>{{completed.end_time}}</span></h1>
+                            </div>
+                            <div class="text-center">
+                                <h1 class="mgb-0 complete-job-text fs-18 fw-700 d-flex justify-content-center align-items-center cursor-pointer"><h1 class="mgb-0 mr-1 fs-18 fw-700 mr-3">Click here to Pay & Complete Job</h1><i class="fa fa-arrow-right fs-18 fw-700" aria-hidden="true"></i></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+        <!-- <div class="row mg-0 justify-content-center d-flex profile-gap">
+                <div class="col-md-12">
+                    <h1 class="fs-18 fw-700 text-color">On-Going Bookings</h1>
+                </div>
+                </div> -->
+      </div>
+    </div>
+  </div>
+</div>

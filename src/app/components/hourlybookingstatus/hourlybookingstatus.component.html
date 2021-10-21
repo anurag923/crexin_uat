@@ -1,0 +1,824 @@
+<div class="container-fluid p-0">
+  <div class="profile-image">
+    <div class="col-md-12 text-center text-position-center">
+      <h1 class="text-light fs-30 fw-700">Hourly Booking Status</h1>
+    </div>
+  </div>
+  <!-- on going -->
+  <div class="on-going-bg" *ngIf="ongoing">
+    <div class="d-flex flex-wrap">
+      <div class="button_back w-50">
+        <button type="button" class="btn btn-default" (click)="back()">
+          Back
+        </button>
+      </div>
+      <h1 class="fs-18 fw-700 text-center">On-Going</h1>
+    </div>
+    <div class="subbg">
+      <div class="grid">
+        <div class="row" *ngFor="let s of response">
+          <div class="col-md-2">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">Booking Type:</span>
+              <span class="fs-15 fw-700 text-color">{{ s.rent.type }}</span>
+            </h1>
+          </div>
+          <div class="col-md-2">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">No of Hours:</span>
+              <span class="fs-15 fw-700 text-color">{{ s.rent.duration }}</span>
+            </h1>
+          </div>
+          <div class="col-md-2">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">Booking Amount:</span>
+              <span class="text-color fs-15 fw-700"
+                ><i class="fa fa-inr mr-1 fs-13" aria-hidden="true"></i
+                ><span>{{ booked_amount }}</span></span
+              >
+            </h1>
+          </div>
+          <div class="col-md-2">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">Amount Paid:</span>
+              <span class="text-color fs-15 fw-700"
+                ><i class="fa fa-inr mr-1 fs-13" aria-hidden="true"></i
+                ><span>{{ s.paid_amount }}</span></span
+              >
+            </h1>
+          </div>
+        </div>
+        <!-- <div class="row">
+                    <div class="col-md-12">
+                        <h1>
+                            <span class="fs-15 text-color mr-1">Total Amount to be paid as on date:</span> <span
+                                class="text-color fs-15 fw-700"><i class="fa fa-inr"
+                                    aria-hidden="true"></i><span>0</span></span>
+                        </h1>
+                    </div>
+                </div> -->
+        <div class="row">
+          <div class="col-md-4">
+            <div class="operator-now mt-4">
+              <h1 class="fs-18 text-color text-center mgb-0">
+                Rate Operator Now
+              </h1>
+              <div class="d-flex justify-content-center">
+                <h1 class="fs-15 fw-700 mr-5 mgb-0">On time</h1>
+                <h1 class="fs-15 fw-700 mgb-0">
+                  <i class="fa fa-star crexin-text" aria-hidden="true"></i>
+                  <i
+                    class="fa fa-star crexin-text mr-2 ml-2"
+                    aria-hidden="true"
+                  ></i>
+                  <i class="fa fa-star crexin-text" aria-hidden="true"></i>
+                  <i class="fa fa-star mr-2 ml-2" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </h1>
+              </div>
+              <div class="d-flex justify-content-center">
+                <h1 class="fs-15 fw-700 mr-5 mgb-0">Behaviour</h1>
+                <h1 class="fs-15 fw-700 mgb-0">
+                  <i class="fa fa-star crexin-text" aria-hidden="true"></i>
+                  <i
+                    class="fa fa-star crexin-text mr-2 ml-2"
+                    aria-hidden="true"
+                  ></i>
+                  <i class="fa fa-star crexin-text" aria-hidden="true"></i>
+                  <i class="fa fa-star mr-2 ml-2" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </h1>
+              </div>
+              <div class="d-flex justify-content-center">
+                <h1 class="fs-15 fw-700 mr-5 mgb-0">Quality of work</h1>
+                <h1 class="fs-15 fw-700 mgb-0">
+                  <i class="fa fa-star crexin-text" aria-hidden="true"></i>
+                  <i
+                    class="fa fa-star crexin-text mr-2 ml-2"
+                    aria-hidden="true"
+                  ></i>
+                  <i class="fa fa-star crexin-text" aria-hidden="true"></i>
+                  <i class="fa fa-star mr-2 ml-2" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-md-4 float-right text-right">
+            <button
+              class="btn ongoing-btn text-color fs-15 fw-700 w-100"
+              (click)="complete()"
+            >
+              Complete Booking
+            </button>
+            <h1 class="text-success fs-18 fw-700 text-center" *ngIf="show">
+              Booking has been completed
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="booking-details my-4">
+      <div class="grid">
+        <div class="row" *ngFor="let s of response">
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Booking Details</h1>
+            <div class="border-bottom mgb-10"></div>
+            <h1 class="fs-15 mgb-0">
+              <span class="fs-15 mr-2">Booking ID:</span>
+              <span class="fs-15 fw-700">{{ s.booked_id }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> Equipment Type: </span>
+              <span class="fs-15 fw-700">{{
+                s.rent.subcategory.category.c_name
+              }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> Booking Date: </span>
+              <span class="fs-15 fw-700">{{ s.rent.booked_date }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> Booking Time: </span>
+              <span class="fs-15 fw-700">{{ s.rent.booked_time }}</span>
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Scheduled Details</h1>
+            <div class="border-bottom mgb-10"></div>
+            <h1 class="fs-15 mgb-0">
+              <span class="fs-15 mr-2">Start Date & Time:</span>
+              <span class="fs-15 fw-700"
+                >{{ s.rent.start_date }} {{ s.rent.start_time }}</span
+              >
+            </h1>
+            <!-- <h1 class="mgb-0">
+                            <span class="fs-15 mr-2">
+                                End Date & Time:
+                            </span>
+                            <span class="fs-15 fw-700">10-05-2021 10:00am</span>
+                        </h1> -->
+          </div>
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Worksite Address</h1>
+            <div class="border-bottom mgb-10"></div>
+            <h1 class="fs-15 mgb-0">
+              <span class="fs-15 mr-2"
+                >{{ s.rent.user.site[0].address1 }},
+                {{ s.rent.user.site[0].address2 }}</span
+              >
+              <span class="fs-15">{{ s.rent.user.site[0].landmark }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> {{ s.rent.user.site[0].state }}, </span>
+              <span class="fs-15">{{ s.rent.user.site[0].city }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15">{{ s.rent.user.site[0].pincode }}</span>
+            </h1>
+          </div>
+
+                    <div class="col-md-3">
+                        <h1 class="fs-18 fw-700 text-color mgb-10">
+                            Billing Details
+                        </h1>
+                        <div class="border-bottom mgb-10"></div>
+                        <h1 class="fs-15 mgb-0">
+                            <span class="fs-15 mr-2"><strong>Plot/Flat No. & Building Name: </strong>{{s.rent.user.userbilling.address}},
+                            <br><strong>Street Name/Area:</strong>{{s.rent.user.userbilling.city}}</span>
+                            <span class="fs-15">{{s.rent.user.userbilling.company_name}}</span>
+                        </h1>
+                        <h1 class="mgb-0">
+                            <span class="fs-15 mr-2">
+                                {{s.rent.user.userbilling.gstn}},
+                            </span>
+                            <span class="fs-15">{{s.rent.user.userbilling.email}}</span>
+                        </h1>
+                        <h1 class="mgb-0">
+                            <span class="fs-15">{{s.rent.user.site[0].pincode}}</span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scheduled -->
+
+  <div class="scheduled-bg" *ngIf="scheduled">
+    <div class="d-flex flex-wrap">
+      <div class="button_back w-50">
+        <button type="button" class="btn btn-default" (click)="back()">
+          Back
+        </button>
+      </div>
+      <h1 class="fs-18 fw-700 text-center">Scheduled</h1>
+    </div>
+    <div class="scheduled-subbg">
+      <div class="grid">
+        <div class="row" *ngFor="let s of response">
+          <div class="col-md-3">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">Booking Type:</span>
+              <span class="fs-15 fw-700 text-color">{{ s.rent.type }}</span>
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">No of Hours:</span>
+              <span class="fs-15 fw-700 text-color">{{ s.rent.duration }}</span>
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">Booking Amount:</span>
+              <span class="text-color fs-15 fw-700"
+                ><i class="fa fa-inr" aria-hidden="true"></i
+                ><span>{{ booked_amount }}</span></span
+              >
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">Amount Paid:</span>
+              <span class="text-color fs-15 fw-700"
+                ><i class="fa fa-inr mr-1 fs-13" aria-hidden="true"></i
+                ><span>{{ s.paid_amount }}</span></span
+              >
+            </h1>
+          </div>
+        </div>
+        <!-- <div class="row">
+                    <div class="col-md-12">
+                        <h1>
+                            <span class="fs-15 text-color mr-1">Total Amount to be paid as on date:</span> <span
+                                class="text-color fs-15 fw-700"><i class="fa fa-inr"
+                                    aria-hidden="true"></i><span>0</span></span>
+                        </h1>
+                    </div>
+                </div> -->
+
+        <div class="row mt-4">
+          <div class="col-md-2 mx-auto">
+            <button
+              class="btn btn-danger fs-15 text-white fw-600 w-100"
+              data-bs-toggle="modal"
+              data-bs-target="#proceedtopay"
+            >
+              Cancel Booking
+            </button>
+            <!-- <h1 class="text-success fs-18 fw-700">Booking has been completed</h1> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="booking-details my-4">
+      <div class="grid">
+        <div class="row" *ngFor="let s of response">
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Booking Details</h1>
+            <div class="border-bottom mgb-10"></div>
+            <h1 class="fs-15 mgb-0">
+              <span class="fs-15 mr-2">Booking ID:</span>
+              <span class="fs-15 fw-700">{{ s.booked_id }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> Equipment Type: </span>
+              <span class="fs-15 fw-700">{{
+                s.rent.subcategory.category.c_name
+              }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> Booking Date: </span>
+              <span class="fs-15 fw-700">{{ s.rent.booked_date }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> Booking Time: </span>
+              <span class="fs-15 fw-700">{{ s.rent.booked_time }}</span>
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Scheduled Details</h1>
+            <div class="border-bottom mgb-10"></div>
+            <h1 class="fs-15 mgb-0">
+              <span class="fs-15 mr-2">Start Date & Time:</span>
+              <span class="fs-15 fw-700"
+                >{{ s.rent.start_date }} {{ s.rent.start_time }}</span
+              >
+            </h1>
+            <!-- <h1 class="mgb-0">
+                            <span class="fs-15 mr-2">
+                                End Date & Time:
+                            </span>
+                            <span class="fs-15 fw-700">10-05-2021 10:00am</span>
+                        </h1> -->
+          </div>
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Worksite Address</h1>
+            <div class="border-bottom mgb-10"></div>
+            <h1 class="fs-15 mgb-0">
+              <span class="fs-15 mr-2"
+                >{{ s.rent.user.site[0].address1 }},
+                {{ s.rent.user.site[0].address2 }}</span
+              >
+              <span class="fs-15">{{ s.rent.user.site[0].landmark }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> {{ s.rent.user.site[0].state }}, </span>
+              <span class="fs-15">{{ s.rent.user.site[0].city }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15">{{ s.rent.user.site[0].pincode }}</span>
+            </h1>
+          </div>
+
+                    <div class="col-md-3">
+                        <h1 class="fs-18 fw-700 text-color mgb-10">
+                            Billing Details
+                        </h1>
+                        <div class="border-bottom mgb-10"></div>
+                        <h1 class="fs-15 mgb-0">
+                            <span class="fs-15 mr-2"><strong>Plot/Flat No. & Building Name: </strong>{{s.rent.user.userbilling.address}},
+                              <br> <strong>Street Name/Area: </strong> {{s.rent.user.userbilling.city}}</span>
+                            <span class="fs-15">{{s.rent.user.userbilling.company_name}}</span>
+                        </h1>
+                        <h1 class="mgb-0">
+                            <span class="fs-15 mr-2">
+                                {{s.rent.user.userbilling.gstn}},
+                            </span>
+                            <span class="fs-15">{{s.rent.user.userbilling.email}}</span>
+                        </h1>
+                        <h1 class="mgb-0">
+                            <span class="fs-15">{{s.rent.user.site[0].pincode}}</span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <div class="scheduled-bg" *ngIf="pending">
+    <div class="d-flex flex-wrap">
+      <div class="button_back w-50">
+        <button type="button" class="btn btn-default" (click)="back()">
+          Back
+        </button>
+      </div>
+      <h1 class="fs-18 fw-700 text-center">Pending</h1>
+    </div>
+    <div class="scheduled-subbg">
+      <div class="grid">
+        <div class="row" *ngFor="let s of response">
+          <div class="col-md-3">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">Booking Type:</span>
+              <span class="fs-15 fw-700 text-color">{{ s.rent.type }}</span>
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">No of Hours:</span>
+              <span class="fs-15 fw-700 text-color">{{ s.rent.duration }}</span>
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">Booking Amount:</span>
+              <span class="text-color fs-15 fw-700"
+                ><i class="fa fa-inr" aria-hidden="true"></i
+                ><span>{{ booked_amount }}</span></span
+              >
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">Amount Paid:</span>
+              <span class="text-color fs-15 fw-700"
+                ><i class="fa fa-inr mr-1 fs-13" aria-hidden="true"></i
+                ><span>{{ s.paid_amount }}</span></span
+              >
+            </h1>
+          </div>
+        </div>
+        <!-- <div class="row">
+                    <div class="col-md-12">
+                        <h1>
+                            <span class="fs-15 text-color mr-1">Total Amount to be paid as on date:</span> <span
+                                class="text-color fs-15 fw-700"><i class="fa fa-inr"
+                                    aria-hidden="true"></i><span>0</span></span>
+                        </h1>
+                    </div>
+                </div> -->
+
+        <div class="row mt-4">
+          <div class="col-md-2 mx-auto">
+            <button
+              class="btn btn-danger fs-15 text-white fw-600 w-100"
+              data-bs-toggle="modal"
+              data-bs-target="#proceedtopay"
+            >
+              Cancel Booking
+            </button>
+            <!-- <h1 class="text-success fs-18 fw-700">Booking has been completed</h1> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="booking-details my-4">
+      <div class="grid">
+        <div class="row" *ngFor="let s of response">
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Booking Details</h1>
+            <div class="border-bottom mgb-10"></div>
+            <h1 class="fs-15 mgb-0">
+              <span class="fs-15 mr-2">Booking ID:</span>
+              <span class="fs-15 fw-700">{{ s.booked_id }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> Equipment Type: </span>
+              <span class="fs-15 fw-700">{{
+                s.rent.subcategory.category.c_name
+              }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> Booking Date: </span>
+              <span class="fs-15 fw-700">{{ s.rent.booked_date }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> Booking Time: </span>
+              <span class="fs-15 fw-700">{{ s.rent.booked_time }}</span>
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Scheduled Details</h1>
+            <div class="border-bottom mgb-10"></div>
+            <h1 class="fs-15 mgb-0">
+              <span class="fs-15 mr-2">Start Date & Time:</span>
+              <span class="fs-15 fw-700"
+                >{{ s.rent.start_date }} {{ s.rent.start_time }}</span
+              >
+            </h1>
+            <!-- <h1 class="mgb-0">
+                            <span class="fs-15 mr-2">
+                                End Date & Time:
+                            </span>
+                            <span class="fs-15 fw-700">10-05-2021 10:00am</span>
+                        </h1> -->
+          </div>
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Worksite Address</h1>
+            <div class="border-bottom mgb-10"></div>
+
+            <div class="d-flex justify-content-start align-items-center mb-1">
+              <div class="fs-15 w-50">Plot No & Building:</div>
+              <div class="font-weight-bold w-50">
+                {{ s.rent.user.site[0].address1 }}
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center mb-1">
+              <div class="fs-15 w-50">Street/Area:</div>
+              <div class="font-weight-bold w-50">
+                {{ s.rent.user.site[0].address2 }}
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center mb-1">
+              <div class="fs-15 w-50">Landmark:</div>
+              <div class="font-weight-bold w-50">
+                {{ s.rent.user.site[0].landmark }}
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center mb-1">
+              <div class="fs-15 w-50">State:</div>
+              <div class="font-weight-bold w-50">
+                {{ s.rent.user.site[0].state }}
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center mb-1">
+              <div class="fs-15 w-50">City:</div>
+              <div class="font-weight-bold w-50">
+                {{ s.rent.user.site[0].city }}
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center mb-1">
+              <div class="fs-15 w-50">Pincode:</div>
+              <div class="font-weight-bold w-50">
+                {{ s.rent.user.site[0].pincode }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Billing Details</h1>
+            <div class="border-bottom mgb-10"></div>
+            <div class="d-flex justify-content-start align-items-center mb-1">
+              <div class="fs-15 w-50">Company Address:</div>
+              <div class="font-weight-bold w-50">
+                {{ s.rent.user.userbilling.address }}
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center mb-1">
+              <div class="fs-15 w-50">City:</div>
+              <div class="font-weight-bold w-50">
+                {{ s.rent.user.userbilling.city }}
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center mb-1">
+              <div class="fs-15 w-50">Company Name:</div>
+              <div class="font-weight-bold w-50">
+                {{ s.rent.user.userbilling.company_name }}
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center mb-1">
+              <div class="fs-15 w-50">GSTN No:</div>
+              <div class="font-weight-bold w-50">
+                {{ s.rent.user.userbilling.gstn }}
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center mb-1">
+              <div class="fs-15 w-50">Email Id:</div>
+              <div class="font-weight-bold w-50">
+                {{ s.rent.user.userbilling.email }}
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center mb-1">
+              <div class="fs-15 w-50">Pincode:</div>
+              <div class="font-weight-bold w-50">
+                {{ s.rent.user.site[0].pincode }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- completed -->
+
+  <div class="completed-bg" *ngIf="completed">
+    <div class="d-flex flex-wrap">
+      <div class="button_back w-50">
+        <button type="button" class="btn btn-default" (click)="back()">
+          Back
+        </button>
+      </div>
+      <h1 class="fs-18 fw-700 text-center">Completed</h1>
+    </div>
+    <div class="subbg">
+      <div class="grid">
+        <div class="row" *ngFor="let s of response">
+          <div class="col-md-3">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">Booking Type:</span>
+              <span class="fs-15 fw-700 text-color">{{ s.rent.type }}</span>
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">No of Hours:</span>
+              <span class="fs-15 fw-700 text-color">{{ s.rent.duration }}</span>
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">Booking Amount:</span>
+              <span class="text-color fs-15 fw-700"
+                ><i class="fa fa-inr mr-1 fs-13" aria-hidden="true"></i
+                ><span>{{ booked_amount }}</span></span
+              >
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="mgb-0">
+              <span class="fs-15 text-color mr-1">Amount Paid:</span>
+              <span class="text-color fs-15 fw-700"
+                ><i class="fa fa-inr mr-1 fs-13" aria-hidden="true"></i
+                ><span>{{ s.paid_amount }}</span></span
+              >
+            </h1>
+          </div>
+        </div>
+        <!-- <div class="row">
+                    <div class="col-md-6">
+                        <h1>
+                            <span class="fs-15 text-color mr-1">Total Amount to be paid as on date:</span> <span
+                                class="text-color fs-15 fw-700"><i class="fa fa-inr"
+                                    aria-hidden="true"></i><span>1750</span></span>
+                        </h1>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <h1 class="text-right">
+                            <i class="fa fa-download mr-2 cursor-pointer" aria-hidden="true"></i>
+                            <i class="fa fa-share-alt cursor-pointer" aria-hidden="true"></i>
+                        </h1>
+                    </div>
+                </div> -->
+        <div class="row">
+          <div class="col-md-4">
+            <div class="operator-now-completed mt-4">
+              <h1 class="fs-18 text-color text-center mgb-0">
+                Rate Operator Now
+              </h1>
+              <div class="d-flex justify-content-center">
+                <h1 class="fs-15 fw-700 mr-5 mgb-0">On time</h1>
+                <h1 class="fs-15 fw-700 mgb-0">
+                  <i class="fa fa-star crexin-text" aria-hidden="true"></i>
+                  <i
+                    class="fa fa-star crexin-text mr-2 ml-2"
+                    aria-hidden="true"
+                  ></i>
+                  <i class="fa fa-star crexin-text" aria-hidden="true"></i>
+                  <i class="fa fa-star mr-2 ml-2" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </h1>
+              </div>
+              <div class="d-flex justify-content-center">
+                <h1 class="fs-15 fw-700 mr-5 mgb-0">Behaviour</h1>
+                <h1 class="fs-15 fw-700 mgb-0">
+                  <i class="fa fa-star crexin-text" aria-hidden="true"></i>
+                  <i
+                    class="fa fa-star crexin-text mr-2 ml-2"
+                    aria-hidden="true"
+                  ></i>
+                  <i class="fa fa-star crexin-text" aria-hidden="true"></i>
+                  <i class="fa fa-star mr-2 ml-2" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </h1>
+              </div>
+              <div class="d-flex justify-content-center">
+                <h1 class="fs-15 fw-700 mr-5 mgb-0">Quality of work</h1>
+                <h1 class="fs-15 fw-700 mgb-0">
+                  <i class="fa fa-star crexin-text" aria-hidden="true"></i>
+                  <i
+                    class="fa fa-star crexin-text mr-2 ml-2"
+                    aria-hidden="true"
+                  ></i>
+                  <i class="fa fa-star crexin-text" aria-hidden="true"></i>
+                  <i class="fa fa-star mr-2 ml-2" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-md-4 d-flex justify-content-center">
+            <span class="text-muted fs-18 fw-700"
+              >Booking has been completed</span
+            >
+            <i
+              class="fa fa-download mx-2 my-1 cursor-pointer"
+              aria-hidden="true"
+            ></i>
+            <i
+              class="fa fa-share-alt my-1 cursor-pointer"
+              aria-hidden="true"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="booking-details my-4">
+      <div class="grid">
+        <div class="row" *ngFor="let s of response">
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Booking Details</h1>
+            <div class="border-bottom mgb-10"></div>
+            <h1 class="fs-15 mgb-0">
+              <span class="fs-15 mr-2">Booking ID:</span>
+              <span class="fs-15 fw-700">{{ s.booked_id }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> Equipment Type: </span>
+              <span class="fs-15 fw-700">{{
+                s.rent.subcategory.category.c_name
+              }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> Booking Date: </span>
+              <span class="fs-15 fw-700">{{ s.rent.booked_date }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> Booking Time: </span>
+              <span class="fs-15 fw-700">{{ s.rent.booked_time }}</span>
+            </h1>
+          </div>
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Scheduled Details</h1>
+            <div class="border-bottom mgb-10"></div>
+            <h1 class="fs-15 mgb-0">
+              <span class="fs-15 mr-2">Start Date & Time:</span>
+              <span class="fs-15 fw-700"
+                >{{ s.rent.start_date }} {{ s.rent.start_time }}</span
+              >
+            </h1>
+            <!-- <h1 class="mgb-0">
+                            <span class="fs-15 mr-2">
+                                End Date & Time:
+                            </span>
+                            <span class="fs-15 fw-700">10-05-2021 10:00am</span>
+                        </h1> -->
+          </div>
+          <div class="col-md-3">
+            <h1 class="fs-18 fw-700 text-color mgb-10">Worksite Address</h1>
+            <div class="border-bottom mgb-10"></div>
+            <h1 class="fs-15 mgb-0">
+              <span class="fs-15 mr-2"
+                >{{ s.rent.user.site[0].address1 }},
+                {{ s.rent.user.site[0].address2 }}</span
+              >
+
+              <span class="fs-15">{{ s.rent.user.site[0].landmark }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15 mr-2"> {{ s.rent.user.site[0].state }}, </span>
+              <span class="fs-15">{{ s.rent.user.site[0].city }}</span>
+            </h1>
+            <h1 class="mgb-0">
+              <span class="fs-15">{{ s.rent.user.site[0].pincode }}</span>
+            </h1>
+          </div>
+
+                    <div class="col-md-3">
+                        <h1 class="fs-18 fw-700 text-color mgb-10">
+                            Billing Details
+                        </h1>
+                        <div class="border-bottom mgb-10"></div>
+                        <h1 class="fs-15 mgb-0">
+                            <span class="fs-15 mr-2"><strong>Plot/Flat No. & Building Name: </strong>{{s.rent.user.userbilling.address}},
+                              <br>  <strong>Street Name/Area: </strong>{{s.rent.user.userbilling.city}}</span>
+                            <span class="fs-15">{{s.rent.user.userbilling.company_name}}</span>
+                        </h1>
+                        <h1 class="mgb-0">
+                            <span class="fs-15 mr-2">
+                                {{s.rent.user.userbilling.gstn}},
+                            </span>
+                            <span class="fs-15">{{s.rent.user.userbilling.email}}</span>
+                        </h1>
+                        <h1 class="mgb-0">
+                            <span class="fs-15">{{s.rent.user.site[0].pincode}}</span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div *ngIf="loading" class="text-center col-md-12">
+            <h1 class="fs-15 fw-700">loading ...</h1>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" id="proceedtopay">
+  <div class="modal-dialog">
+    <div
+      class="modal-content"
+      style="background-color: #fcc0c0; color: #151715"
+    >
+      <div class="modal-header border-0">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="closemodal()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2 class="text-center">
+          Are you sure you want to cancel this booking ?
+        </h2>
+      </div>
+      <div class="modal-footer border-0">
+        <button
+          type="button"
+          class="button bg-white ml-auto mr-3"
+          data-dismiss="modal"
+          (click)="cancel()"
+        >
+          ok
+        </button>
+        <button
+          type="button"
+          class="button bg-white"
+          data-dismiss="modal"
+          (click)="closemodal()"
+        >
+          cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

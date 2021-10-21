@@ -1,0 +1,144 @@
+/* img{
+    height: 170px !important;
+    border-radius: 5%;
+    width: 250px !important;
+} */
+.pad-lf-3 {
+  padding-left: 3rem !important;
+}
+
+.space_bt {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form-control {
+  background-color: transparent !important;
+  /* border: none !important; */
+  border: 2px solid #ccc !important;
+  border-radius: 5px !important;
+  height: calc(1.9em + 0.75rem + 2px) !important;
+}
+
+.dropdown-toggle::after {
+  -ms-transform: rotate(-90deg);
+  /* IE 9 */
+  -webkit-transform: rotate(-90deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(-90deg);
+  margin-right: 20px !important;
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+
+  background-position: right calc(-1.625em + 0.1875rem) center !important;
+}
+
+.form-control {
+  padding: 0 0 0 5px !important;
+  font-size: 15px !important;
+}
+
+.ht34 {
+  height: 34px !important;
+}
+
+select:hover {
+  border: 2px solid #dca101 !important;
+}
+
+select:focus-visible {
+  border: 2px solid #dca101 !important;
+}
+
+.date1:hover {
+  border: 2px solid #dca101 !important;
+}
+
+.time1:hover {
+  border: 2px solid #dca101 !important;
+}
+
+.date1:focus-visible {
+  border: 2px solid #dca101 !important;
+}
+
+.time1:focus-visible {
+  border: 2px solid #dca101 !important;
+}
+
+.ht-40 {
+  height: 40px;
+}
+
+.mt-3l {
+  margin-top: 1.8rem;
+}
+
+@media (max-width:500px) {
+  .three {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+.col-12w {
+  max-width: 100% !important;
+}
+
+.form-100 {
+  width: 100%;
+}
+
+
+@media (max-width:772px) {
+  .three {
+    width: 100%;
+  }
+
+  .col-12w {
+    max-width: 100% !important;
+  }
+
+  .form-100 {
+    width: 100%;
+  }
+}
+
+
+
+.booking_cls {
+  display: table;
+
+}
+
+.tbl-row {
+  display: table-row;
+}
+
+.col-12w {
+  display: table-cell;
+  padding: 15px;
+}
+
+.w1 {
+  width: 24%;
+}
+
+.w2 {
+  width: 150px;
+}
+
+.w3 {
+  width: 150px;
+}
+
+.w4 {
+  width: 120px;
+}
+
+.m15 {
+  margin-left: 15px;
+}

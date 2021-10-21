@@ -1,0 +1,208 @@
+<div class="container-fluid p-0">
+  <div class="bg-image">
+    <div class="main-forms1">
+      <div class="header">
+        <div class="logo">
+          <img src="/assets/images/Log_one.png" alt="login-log" />
+        </div>
+      </div>
+      <div class="body">
+        <div class="">
+          <h1 class="text-color mb-2 fs-20 fw-700">Complete your Signup Now</h1>
+          <div class="forms">
+            <form [formGroup]="Singup">
+              <div class="row1">
+                <div class="form__div col-md-6 col-xs-12">
+                  <div class="card_form">
+                    <input
+                      type="text"
+                      class="form__input"
+                      placeholder=" "
+                      formControlName="fullname"
+                      [ngClass]="{
+                        'is-invalid': submitted && f.fullname.errors
+                      }"
+                    />
+                    <label for="" class="form__label">Full Name</label>
+                    <div
+                      *ngIf="submitted && f.fullname.errors"
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="f.fullname.errors.required"
+                        class="fs-12 error_pos"
+                      >
+                        Full name is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form__div col-md-6 col-xs-12">
+                  <div class="card_form">
+                    <input
+                      type="text"
+                      class="form__input"
+                      placeholder=" "
+                      formControlName="mobile"
+                      [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+                    />
+                    <label for="" class="form__label">Mobile Number</label>
+                    <div
+                      *ngIf="submitted && f.mobile.errors"
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="f.mobile.errors.required"
+                        class="fs-12 error_pos"
+                      >
+                        Mobile Number is required
+                      </div>
+                      <div
+                        *ngIf="f.mobile.errors.pattern"
+                        class="fs-12 error_pos"
+                      >
+                        Mobile Number must be of 10 digits
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form__div col-md-6 col-xs-12">
+                  <div class="card_form">
+                    <input
+                      type="email"
+                      class="form__input"
+                      placeholder=" "
+                      formControlName="email"
+                      [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                      #email
+                    />
+                    <label for="" class="form__label">Email Id</label>
+                    <div
+                      *ngIf="submitted && f.email.errors"
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="f.email.errors.required"
+                        class="fs-12 error_pos"
+                      >
+                        Email is required
+                      </div>
+                      <div *ngIf="f.email.errors.email" class="fs-12 error_pos">
+                        Please provide the valid email is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form__div col-md-6 col-xs-12">
+                  <div class="card_form">
+                    <input
+                      type="email"
+                      class="form__input"
+                      placeholder=" "
+                      formControlName="place"
+                      [ngClass]="{ 'is-invalid': submitted && f.place.errors }"
+                      #email
+                    />
+                    <label for="" class="form__label">Place</label>
+                    <div
+                      *ngIf="submitted && f.place.errors"
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="f.email.errors.required"
+                        class="fs-12 error_pos"
+                      >
+                        Place is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form__div col-md-6 col-xs-12">
+                  <div class="card_form">
+                    <input
+                      type="password"
+                      class="form__input"
+                      placeholder=" "
+                      formControlName="password"
+                      [ngClass]="{
+                        'is-invalid': submitted && f.password.errors
+                      }"
+                    />
+                    <label for="" class="form__label">Create Password</label>
+                    <div
+                      *ngIf="submitted && f.password.errors"
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="f.password.errors.required"
+                        class="fs-12 error_pos"
+                      >
+                        Password is required
+                      </div>
+                      <div
+                        *ngIf="f.password.errors.pattern"
+                        class="fs-8 error_pos"
+                      >
+                        Min requirement:8 characters, 1 uppercase , 1 lowercase
+                        , 1 number & 1 special char
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form__div col-md-6 col-xs-12">
+                  <div class="card_form">
+                    <input
+                      type="password"
+                      class="form__input"
+                      placeholder=" "
+                      formControlName="c_password"
+                      [ngClass]="{
+                        'is-invalid': submitted && f.c_password.errors
+                      }"
+                    />
+                    <label for="" class="form__label">Confirm Password</label>
+                    <div
+                      *ngIf="submitted && f.c_password.errors"
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="f.c_password.errors.required"
+                        class="fs-12 error_pos"
+                      >
+                        Confirm Password is required
+                      </div>
+                      <div
+                        *ngIf="f.c_password.errors.mustMatch"
+                        class="fs-12 error_pos"
+                      >
+                        Passwords must match
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h1 class="text-color fs-15 mgb-10 col-md-12">
+                  This will help recover your account if needed
+                </h1>
+
+                <div class="text-center col-md-12">
+                  <button
+                    class="btn btn text-color fs-15 fw-700 w-100 pd-10"
+                    (click)="onSubmit(email.value)"
+                  >
+                    CREATE ACCOUNT
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

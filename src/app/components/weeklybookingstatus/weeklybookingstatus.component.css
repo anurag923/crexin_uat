@@ -1,0 +1,56 @@
+.on-going-bg{
+    background-color: #d0e8e9;
+    margin: 30px;
+    padding: 10px 30px 30px 30px;
+    border-radius:15px;
+}
+.subbg{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+}
+.booking-details{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+}
+.operator-now{
+    padding: 20px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom right, #f6e8c3, #d0e8e9);
+}
+.border-bottom{
+    border-bottom: 1px solid #bfbfbf;
+}
+ /* scheduled */
+ .scheduled-bg{
+    background-color: #f6e8c3;
+    margin: 30px;
+    padding:10px 30px 30px  30px;
+    border-radius:15px;
+ }
+ .scheduled-subbg{
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    padding: 30px;
+ }
+ .completed-bg{
+    background-color: #dcdcdc;
+    margin: 30px;
+    padding: 30px; 
+ }
+ .btn-danger{
+     background-color: #c82333 !important;
+ }
+ .completed-btn{
+    background-color: #dcdcdc !important;
+ }
+ .operator-now-completed{
+    padding: 20px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom right,#dcdcdc, #fff);
+ }
+
+ .fs-15{
+    font-size: 15px !important;
+}
