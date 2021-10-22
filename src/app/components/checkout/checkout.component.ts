@@ -376,26 +376,13 @@ export class CheckoutComponent implements OnInit {
   }
   d_days() {
     localStorage.setItem('time', 'daily')
-    // localStorage.setItem('no_days',this.Daily.get('no_days').value);
-    // this.daily_rate = localStorage.getItem('daily_rate')
-    // this.d_no_days = +this.no_days
-    // this.d_total_days_amount = this.d_no_days * this.daily_rate
-    // console.log(this.d_total_days_amount);
-    //   var d_advance = this.d_total_days_amount / 10;
-    //   var d_advance_round = d_advance.toFixed(2);
-    //   this.d_paid_amount = +d_advance_round;
-    //   console.log(this.d_paid_amount);
-    //   var d_subtotal = this.d_total_days_amount/1.0236;
-    //   var d_subtotal_round = d_subtotal.toFixed(2);
-    //   this.d_sub_tot = +d_subtotal_round;
-    //   var d_gst = this.d_total_days_amount - this.d_sub_tot;
-    //   var d_gst_round = d_gst.toFixed(2);
-    //   this.gstval = +d_gst_round;
-    //   console.log(this.gstval);
     this.daily_rate = +this.d_rate
     this.d_no_days = +this.no_days
+    console.log(this.daily_rate);
+    console.log(this.d_no_days);
     this.d_total_days_amount = this.d_no_days * this.daily_rate
     this.discount_daily = this.d_total_days_amount/10;
+    console.log(this.discount_daily);
     this.subtotlessdisc_daily = this.d_total_days_amount - this.discount_daily;
     this.gstat12_daily = (12*this.subtotlessdisc_daily)/100;
     this.d_sub_tot = this.subtotlessdisc_daily + this.gstat12_daily;
@@ -491,6 +478,9 @@ export class CheckoutComponent implements OnInit {
   }
   hourly_function() {
     localStorage.setItem('time', 'hourly');
+    this.showtaxes_daily = false;
+    this.showtaxes_weekly = false;
+    this.showtaxes_hourly = true;
     this.hourly = true;
     this.daily = false;
     this.weekly = false;
@@ -595,6 +585,9 @@ export class CheckoutComponent implements OnInit {
   }
   daily_function() {
     localStorage.setItem('time', 'daily');
+    this.showtaxes_daily = true;
+    this.showtaxes_weekly = false;
+    this.showtaxes_hourly = false;
     this.daily = true;
     this.hourly = false
     this.weekly = false;
@@ -605,6 +598,11 @@ export class CheckoutComponent implements OnInit {
     this.checked_hourly = false;
     this.checked_weekly = false;
     this.bookingtype = 'Daily';
+    // this.h_sub_tot = 0;
+    // this.discount_hourly = 0;
+    // this.subtotlessdisc_hourly = 0;
+    // this.gstat12_hourly = 0;
+    // this.h_sub_total = 0;
 
     const headers = new HttpHeaders()
       .set('content-type', 'application/json')
@@ -704,6 +702,9 @@ export class CheckoutComponent implements OnInit {
   weekly_function() {
     localStorage.setItem('time', 'weekly');
     console.log(this.weekly_type);
+    this.showtaxes_daily = false;
+    this.showtaxes_weekly = true;
+    this.showtaxes_hourly = false;
     this.weekly = true;
     this.daily = false;
     this.hourly = false;
